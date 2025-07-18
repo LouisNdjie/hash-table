@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    int cont = 1;
     ScoreTable hashTable;
     PlayerScore test;
     char* nom;
