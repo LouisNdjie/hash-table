@@ -8,7 +8,7 @@ using namespace std;
 // ----------------strucrure definissant le score d'un joueur 
 struct PlayerScore
 {
-    char* name ;
+    char name[50];
     int score;
 };
 

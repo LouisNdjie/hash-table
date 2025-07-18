@@ -1,54 +1,23 @@
 #include"header/hash_table.h"
-#include"header/menu.h"
 
 int main(void)
 {
-    int cont = 1;
     ScoreTable hashTable;
+    hashTable.set_table_size();
+    hashTable.create_hash_table();
+    cin.ignore();
     PlayerScore test;
-    char* nom;
-    bool running= true;
-    void print_menu();
-    int choix = 0;
-    while(running)
+    for(int i = 0; i <  hashTable.m_nombreOfScore; i++)
     {
-        void print_menu();
-        cin >> choix;cin.ignore();
-        switch(choix)
-        {
-            case 1: //creer le hash table
-                system("cls");
-                hashTable.set_table_size();
-                hashTable.create_hash_table();
-                break;
-
-            case 2: //ajouter un element;
-                system("cls");
-                cout << "entrez le nom :";
-                cin.getline(nom, 256);
-                strcpy(test.name, nom);
-                cout << "entrez son score :";
-                cin >> test.score;
-                hashTable.add_player(&test);
-                break;
-
-            case 3: // affichez les hash tables
-                system("cls");
-                hashTable.print_score();
-                break;
-            
-            case 4: //recherhe;
-                hashTable.find_player();
-                break;
-
-        }
-
-        cout << "voulez vous cnotinuer ? [0-1] (0 = NO, 1 = YES): ";
-        cin >> cont;cin.ignore();
-        if(cont == 0)
-        {
-            running = false;
-        } 
+        cout << "entrez les noms : ";
+        cin.getline(test.name, 200);
+        cout << "entrez son score : ";
+        cin >> test.score;
+        cin.ignore();
+        hashTable.add_player(&test);
+    
     }
+    hashTable.print_score();
+    hashTable.find_player();
     return 0;
 }

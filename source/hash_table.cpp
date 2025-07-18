@@ -6,7 +6,7 @@ void ScoreTable::create_hash_table()
     m_tableOfScore = new PlayerScore[m_nombreOfScore];
     for(int i = 0; i < m_nombreOfScore; i++)
     {
-        m_tableOfScore[i].name = NULL;
+        m_tableOfScore[i].name[0] = '\0';
         m_tableOfScore[i].score = 0;
     }
 }
@@ -23,7 +23,7 @@ bool ScoreTable::is_empty()
 {
     for(int i = 0; i < m_nombreOfScore; i++)
     {
-        if((m_tableOfScore[i].name != NULL))return false;
+        if((m_tableOfScore[i].name[0] != '\0'))return false;
         
     }
     return true;
@@ -35,13 +35,13 @@ void ScoreTable::add_player(PlayerScore* player)
     if(player == NULL) return;
     int position = hash_data(player->name);
 
-    if(m_tableOfScore[position].name != NULL)
+    if(m_tableOfScore[position].name[0] != '\0')
     {
         cout << "Cet emplacement est deja utilise, nous ne pouvons pas ajouter d'elements\n";
         return;
     }
 
-    m_tableOfScore[position].name = player->name;
+    strcpy(m_tableOfScore[position].name , player->name);
     m_tableOfScore[position].score = player->score;
 }
 // ------------------------------------------------------------------------------------ 
@@ -53,7 +53,7 @@ void ScoreTable::print_score()
     {
         for(int i = 0; i < m_nombreOfScore; i++)
         {
-            if(m_tableOfScore[i].name != NULL)
+            if(m_tableOfScore[i].name[0] != '\0')
             {
                 cout << "[" << i+1 << "] -" << m_tableOfScore[i].name << " : " << m_tableOfScore[i].score << endl;
             }else
@@ -67,11 +67,11 @@ void ScoreTable::print_score()
 // ------------------------------------------------------------------------------------ 
 void ScoreTable::find_player()
 {
-    char * name;
+    PlayerScore essai;
     cout << "entrez le nom recherche :";
-    cin.getline(name, 256);
-    int position = hash_data(name);
-    if(m_tableOfScore[position].name != NULL && strcmp(m_tableOfScore[position].name, name)==0)
+    cin.getline(essai.name, 256);
+    int position = hash_data(essai.name);
+    if(m_tableOfScore[position].name[0] != '\0' && strcmp(m_tableOfScore[position].name, essai.name)==0)
     {
         cout << m_tableOfScore[position].name << " : " << m_tableOfScore[position].score;
         return;
