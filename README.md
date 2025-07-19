@@ -13,3 +13,5 @@ Dans le cadre de cet exercice nous avons opté pour un hashage simple qui combin
 
 ## Qu'est ce qu'une collision ?
 Une peut être vu ici comme une interférence qui survient lors du hashage de l'information. En effet, il est posiible lors du hashage de l'information de tomber sur le même résultat de hash pour deux informations différentes. Ce qui crée donc une interférence entre les informations présentent et celle qui veut être insérée.
+
+### Author : @COCO_LOULOU
